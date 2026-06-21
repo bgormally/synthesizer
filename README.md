@@ -7,7 +7,25 @@
 
 <!-- badges: end -->
 
-The goal of synthesizer is to …
+synthesizer helps instructors create collaborative project teams based
+on student preferences and availability. The goal is to take make a
+manual process easier by automatically considering and balancing
+preferences and constraints.
+
+This package is designed to facilitate one of the logistical challenges
+of collaborative, project-based, and experiential learning–creating
+project teams. Instead of randomly making teams, or enabling students to
+entirely choose their teams, synthesizer provides instructors with a
+streamlined way to account for student preferences. Students provide up
+to 4 peers they’d prefer to work with, 1 peer they’d prefer not to work
+with, and their availability for out-of-class meeting times based on 2
+options.
+
+syntheizer uses integer programming to create teams that optimize the
+number of preferred student pairings, while ensuring students are not
+put with non-preferred peers and that all team members are available at
+the same time. This package aims to help instructors save time while
+also ensuring teams are created with student input.
 
 ## Installation
 
