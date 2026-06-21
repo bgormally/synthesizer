@@ -28,6 +28,8 @@ syn_teams <- function(
     team_penalty = 2,
     time_limit = 2 # in minutes
     ) {
+  library(ROI.plugin.glpk)
+
   # ------------------------------------------------------------
   # 1. Clean data
   # ------------------------------------------------------------
