@@ -1,24 +1,26 @@
-#' Pull Data from a Database and dump it into a Tibble
+#' Synthesize preferences and availability into teams
 #'
-#' This is a wrapper function of `DBI::dbGetQuery()` meant to minic the
-#' `db.get_dataframe()` function in gestalten. Instead of dumping the data to a
-#' pandas dataframe, we're dumping it to a tibble, which is the R version of a
-#' tidy dataframe. It has better printing properties, is lazy in its column
-#' encoding (which is a good thing), and is the way we should view data in R.
+#' This function uses integer programming from the `ompr` package. Each student
+#' provides up to 4 peers who they would prefer working with and 1 peer they'd
+#' like to avoid working with as well as their availability for 2 out-of-class meeting
+#' times. These variables are stored in a data frame and `syn_teams` creates teams
+#' that maximize preferences while avoiding non-preferences and ensuring shared
+#' availability.
 #'
-#' @param db The Database Connection created from `SQL()`
-#' @param query The SQL query you want to run
+#' @param students The data frame student preferences and availability are stored
+#' @param min_size The minimum number of students per team
+#' @param max_size The maximum number of students per team
+#' @param preference_weight The weight of preferences
+#' @param team_penalty Penalty for adding teams
+#' @param time_limit Time limit in minutes
 #'
-#' @return A Tibble Dataframe of the results from `query`
+#' @return A tibble dataframe of teams based on preferences and availability
 #' @export
 #'
 #' @examples
-#' \dontrun{
-#' library(gestaltenr)
-#' app <- Gestalten(config_file = "config.local.yml")
-#' db_ensigndw <- SQL(app = app, db_key = "ENSIGNDW")
-#' data <- get_dataframe(db_ensigndw, "SELECT TOP 100 * FROM EnsignDW.dbo.facPCCPDPM")
-#' }
+#' library(synthesizer)
+#' students <- read.csv("students.csv")
+#' teams <- syn_teams(students)
 #'
 syn_teams <- function(
     students,

@@ -39,11 +39,15 @@ pak::pak("bgormally/synthesizer")
 
 ## Example
 
-This is a basic example which shows you how to solve a common problem:
+This is a basic example which shows how `syn_teams` generates
+collaborative project teams based on the preferences and availability
+from each student:
 
 ``` r
 library(synthesizer)
-## basic example code
+students <- 
+
+teams <- syn_teams(students, time_limit = 1)
 ```
 
 What is special about using `README.Rmd` instead of just `README.md`?

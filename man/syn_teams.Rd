@@ -2,7 +2,7 @@
 % Please edit documentation in R/syn_teams.R
 \name{syn_teams}
 \alias{syn_teams}
-\title{Pull Data from a Database and dump it into a Tibble}
+\title{Synthesize preferences and availability into teams}
 \usage{
 syn_teams(
   students,
@@ -14,26 +14,32 @@ syn_teams(
 )
 }
 \arguments{
-\item{db}{The Database Connection created from \code{SQL()}}
+\item{students}{The data frame student preferences and availability are stored}
 
-\item{query}{The SQL query you want to run}
+\item{min_size}{The minimum number of students per team}
+
+\item{max_size}{The maximum number of students per team}
+
+\item{preference_weight}{The weight of preferences}
+
+\item{team_penalty}{Penalty for adding teams}
+
+\item{time_limit}{Time limit in minutes}
 }
 \value{
-A Tibble Dataframe of the results from \code{query}
+A tibble dataframe of teams based on preferences and availability
 }
 \description{
-This is a wrapper function of \code{DBI::dbGetQuery()} meant to minic the
-\code{db.get_dataframe()} function in gestalten. Instead of dumping the data to a
-pandas dataframe, we're dumping it to a tibble, which is the R version of a
-tidy dataframe. It has better printing properties, is lazy in its column
-encoding (which is a good thing), and is the way we should view data in R.
+This function uses integer programming from the \code{ompr} package. Each student
+provides up to 4 peers who they would prefer working with and 1 peer they'd
+like to avoid working with as well as their availability for 2 out-of-class meeting
+times. These variables are stored in a data frame and \code{syn_teams} creates teams
+that maximize preferences while avoiding non-preferences and ensuring shared
+availability.
 }
 \examples{
-\dontrun{
-library(gestaltenr)
-app <- Gestalten(config_file = "config.local.yml")
-db_ensigndw <- SQL(app = app, db_key = "ENSIGNDW")
-data <- get_dataframe(db_ensigndw, "SELECT TOP 100 * FROM EnsignDW.dbo.facPCCPDPM")
-}
+library(synthesizer)
+students <- read.csv("students.csv")
+teams <- syn_teams(students)
 
 }
