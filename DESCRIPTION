@@ -1,11 +1,19 @@
 Package: synthesizer
-Title: What the Package Does (One Line, Title Case)
+Title: Create Group Project Teams
 Version: 0.0.0.9000
 Authors@R: 
-    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"))
-Description: What the package does (one paragraph).
-License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
-    license
+    c( 
+    person(
+    "Brenna", "Gormally", 
+    "bgormally@ucsd.edu", 
+    role = c("aut", "cre")
+    comment = c(ORCID = "0000-0003-4018-322X"), 
+    person(
+    "Kevin","Brice",
+    "kdbrice1@gmail.com", 
+     role = c("aut", "cre"))
+Description: synthesizer makes it easier for instructors to create collaborative project teams by accounting for studnent preferences and availability.
+License: `use_mit_license()`
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 8.0.0
