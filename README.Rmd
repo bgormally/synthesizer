@@ -35,31 +35,18 @@ pak::pak("bgormally/synthesizer")
 
 ## Example
 
-This is a basic example which shows how `syn_teams` generates collaborative project teams based on the  preferences and availability from each student:
+This is a basic example which shows how `syn_teams` generates collaborative project teams based on the  preferences and availability from each student.
+
+To use `syn_teams`, the data should be organized in columns as follows: each student's name; 1st preferred peer; 2nd preferred peer; 3rd preferred peer; 4th preferred peer; peer to avoid; availability. If any preferences or availability are not collected by the instructor, the columns are still required but those cells should be left blank. 
 
 ```{r example, eval=T}
 library(synthesizer)
 data("students")
-show(students)
+head(students)
 ```
 
+`syn_teams` generates a tibble data frame of each team, with maximized preferences while ensuring students are not with non-preferred peers and they share the same availability as their teammates.
 ```{r, eval=T, warning=F}
-teams <- syn_teams(students = students, time_limit = 1)
+teams <- syn_teams(students = students, time_limit = 0.1)
 teams
 ```
-
-What is special about using `README.Rmd` instead of just `README.md`? You can include R chunks like so:
-
-```{r cars, eval=FALSE}
-summary(cars)
-```
-
-You'll still need to render `README.Rmd` regularly, to keep `README.md` up-to-date. `devtools::build_readme()` is handy for this.
-
-You can also embed plots, for example:
-
-```{r pressure, echo = FALSE, , eval=FALSE}
-plot(pressure)
-```
-
-In that case, don't forget to commit and push the resulting figure files, so they display on GitHub and CRAN.

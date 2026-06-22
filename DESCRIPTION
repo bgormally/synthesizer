@@ -31,6 +31,7 @@ Imports:
     ROI.plugin.glpk,
     tidyselect
 Suggests: 
+    readr
     testthat (>= 3.1.6)
 Config/testthat/edition: 3
 Depends: 

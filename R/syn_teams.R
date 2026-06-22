@@ -18,8 +18,10 @@
 #' @export
 #'
 #' @examples
+#' library(readr)
 #' library(synthesizer)
-#' students <- read.csv("students.csv")
+#'
+#' students <- read_csv("students.csv")
 #' teams <- syn_teams(students)
 #'
 syn_teams <- function(

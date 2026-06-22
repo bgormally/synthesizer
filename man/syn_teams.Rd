@@ -38,8 +38,10 @@ that maximize preferences while avoiding non-preferences and ensuring shared
 availability.
 }
 \examples{
+library(readr)
 library(synthesizer)
-students <- read.csv("students.csv")
+
+students <- read_csv("students.csv")
 teams <- syn_teams(students)
 
 }
