@@ -37,6 +37,15 @@ syn_teams <- function(
   # ------------------------------------------------------------
   # 1. Clean data
   # ------------------------------------------------------------
+  colnames(students) <- c(
+    "Name",
+    "Pref 1",
+    "Pref 2",
+    "Pref 3",
+    "Pref 4",
+    "Avoid",
+    "Availability"
+  )
   students <- students |>
     dplyr::mutate(across(tidyselect::everything(), ~ dplyr::na_if(.x, "")))
 
