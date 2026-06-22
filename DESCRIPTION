@@ -18,7 +18,7 @@ Authors@R:
         )
       )
 Description: synthesizer makes it easier for instructors to create collaborative project teams by accounting for studnent preferences and availability.
-License: `use_mit_license()`
+License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 8.0.0
